@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0c1315">
+  <title>Northstar Tickets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="grain"></div>
+  <main class="shell">
+    <section id="auth-view" class="auth-layout">
+      <div class="auth-intro">
+        <p class="eyebrow"><span class="signal-dot"></span> Northstar support desk</p>
+        <h1>Keep every request moving.</h1>
+        <p class="intro-copy">A calm, focused space for the work that needs a clear next step.</p>
+        <div class="intro-mark" aria-hidden="true"><span>01</span><span>02</span><span>03</span></div>
+      </div>
+      <div class="auth-panel panel">
+        <div class="panel-heading">
+          <p class="eyebrow" id="auth-eyebrow">Welcome back</p>
+          <h2 id="auth-title">Sign in to your desk</h2>
+          <p id="auth-subtitle">Pick up where you left off.</p>
+        </div>
+        <form id="auth-form">
+          <label for="username">Username</label>
+          <input id="username" name="username" autocomplete="username" required maxlength="80" placeholder="e.g. alex" />
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required minlength="1" placeholder="Your password" />
+          <button class="button button-primary" type="submit"><span id="auth-submit-label">Sign in</span><span class="button-arrow">-></span></button>
+          <p id="auth-message" class="form-message" role="alert"></p>
+        </form>
+        <button id="auth-toggle" class="text-button" type="button">Need an account? Create one</button>
+      </div>
+    </section>
+
+    <section id="app-view" class="app-view hidden">
+      <header class="topbar">
+        <a class="brand" href="/"><span class="brand-symbol">+</span><span>northstar</span></a>
+        <div class="topbar-actions"><span class="user-chip" id="user-label"></span><button class="icon-button" id="logout-button" type="button" title="Sign out" aria-label="Sign out">&#8594;</button></div>
+      </header>
+
+      <div class="dashboard-heading">
+        <div><p class="eyebrow"><span class="signal-dot"></span> Personal workspace</p><h1>Your ticket desk</h1><p class="heading-copy">A clear view of what is open, moving, and done.</p></div>
+        <button id="new-ticket-button" class="button button-primary" type="button"><span class="plus">+</span> New ticket</button>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-label">All tickets</span><strong id="stat-all">0</strong><span class="stat-note">in your workspace</span></article>
+        <article class="stat-card stat-accent"><span class="stat-label">In progress</span><strong id="stat-progress">0</strong><span class="stat-note">currently moving</span></article>
+        <article class="stat-card"><span class="stat-label">Closed</span><strong id="stat-closed">0</strong><span class="stat-note">completed requests</span></article>
+      </div>
+
+      <section class="tickets-section">
+        <div class="section-bar"><div><p class="eyebrow">Your queue</p><h2>Tickets</h2></div><div class="filters" role="group" aria-label="Filter tickets"><button class="filter active" data-filter="all" type="button">All</button><button class="filter" data-filter="open" type="button">Open</button><button class="filter" data-filter="in_progress" type="button">In progress</button><button class="filter" data-filter="closed" type="button">Closed</button></div></div>
+        <div id="ticket-list" class="ticket-list"></div>
+        <div id="empty-state" class="empty-state hidden"><span class="empty-icon">+</span><h3>No tickets here yet</h3><p>Create a request and give it a clear next step.</p><button class="button button-secondary" id="empty-create-button" type="button">Create a ticket</button></div>
+        <p id="app-message" class="form-message" role="alert"></p>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="ticket-dialog" class="ticket-dialog">
+    <form id="ticket-form" method="dialog">
+      <div class="dialog-top"><div><p class="eyebrow">New request</p><h2>Create a ticket</h2></div><button id="close-dialog" class="close-button" type="button" aria-label="Close">&times;</button></div>
+      <p class="dialog-copy">What needs your attention?</p>
+      <label for="ticket-title">Title</label>
+      <input id="ticket-title" name="title" required maxlength="160" placeholder="e.g. Update billing address" />
+      <p id="ticket-message" class="form-message" role="alert"></p>
+      <button class="button button-primary" type="submit">Add to queue <span class="button-arrow">-></span></button>
+    </form>
+  </dialog>
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>
